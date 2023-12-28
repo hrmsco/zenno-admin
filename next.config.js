@@ -6,8 +6,7 @@ const nextConfig = {
   distDir: "out",
   images: {
     domains: [
-      "localhost",
-      "api.fabyoh.com", // Replace with your backend domain
+      "zenno-backend.hrms.group", // Replace with your backend domain
       "lh3.googleusercontent.com",
     ],
   },
