@@ -46,7 +46,7 @@ export default async function middleware(req) {
 
     try {
       const { payload } = await jwtVerify(jwt, secret);
-
+      console.log("payload", payload);
       if (payload.role === "customer") {
         return updateCookie();
       } else {
