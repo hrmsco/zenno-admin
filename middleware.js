@@ -47,6 +47,8 @@ export default async function middleware(req) {
     console.log("secret", secret);
 
     try {
+      console.log("jwt in trycatch", jwt);
+      console.log("secret in trycatch", secret);
       const { payload } = await jwtVerify(jwt, secret);
       console.log("payload", payload);
 
