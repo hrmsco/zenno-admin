@@ -87,6 +87,7 @@ export default async function middleware(req) {
         }
       }
     } catch (error) {
+      console.log("error", error);
       return updateCookie();
     }
   }
