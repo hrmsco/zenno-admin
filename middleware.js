@@ -26,6 +26,8 @@ export default async function middleware(req) {
     // Jwt Token
     const jwt = req.cookies.get("access_token")?.value;
 
+    console.log("jwt", jwt);
+
     // Absolute Url
     req.nextUrl.pathname = "/login";
 
