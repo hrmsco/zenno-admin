@@ -39,14 +39,17 @@ export default async function middleware(req) {
 
     // If no token present, redirecting to login page
     if (jwt === undefined) {
+      console.log("jwt undefined");
       return updateCookie();
     }
 
     const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
+    console.log("secret", secret);
 
     try {
       const { payload } = await jwtVerify(jwt, secret);
       console.log("payload", payload);
+
       if (payload.role === "customer") {
         return updateCookie();
       } else {
