@@ -9,7 +9,7 @@ export default async function middleware(req) {
   const unProtectedRoutes = ["/login"];
 
   const pathname = req.nextUrl.pathname;
-
+ 
   if (
     pathname.startsWith("/_next") || // exclude Next.js internals
     pathname.startsWith("/api") || //  exclude all API routes
