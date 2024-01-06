@@ -1,6 +1,6 @@
 // ** Next, React And Locals Imports
 import { NextResponse } from "next/server";
-
+ 
 // ** Third Party Imports
 import { jwtVerify } from "jose";
 
@@ -9,7 +9,7 @@ export default async function middleware(req) {
   const unProtectedRoutes = ["/login"];
 
   const pathname = req.nextUrl.pathname;
-
+ 
   if (
     pathname.startsWith("/_next") || // exclude Next.js internals
     pathname.startsWith("/api") || //  exclude all API routes
@@ -26,6 +26,8 @@ export default async function middleware(req) {
     // Jwt Token
     const jwt = req.cookies.get("access_token")?.value;
 
+    console.log("jwt", jwt);
+
     // Absolute Url
     req.nextUrl.pathname = "/login";
 
@@ -37,13 +39,18 @@ export default async function middleware(req) {
 
     // If no token present, redirecting to login page
     if (jwt === undefined) {
+      console.log("jwt undefined");
       return updateCookie();
     }
 
     const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
+    console.log("secret", secret);
 
     try {
+      console.log("jwt in trycatch", jwt);
+      console.log("secret in trycatch", secret);
       const { payload } = await jwtVerify(jwt, secret);
+      console.log("payload", payload);
 
       if (payload.role === "customer") {
         return updateCookie();
@@ -80,6 +87,7 @@ export default async function middleware(req) {
         }
       }
     } catch (error) {
+      console.log("error", error);
       return updateCookie();
     }
   }
