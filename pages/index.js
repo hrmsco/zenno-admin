@@ -34,6 +34,7 @@ export default function Dashboard() {
     variables: { model: "products" },
   });
 
+  
   const totalProductsData = {
     title: "Total Products",
     color: theme.palette.success.main,
