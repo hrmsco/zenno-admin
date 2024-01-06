@@ -30,6 +30,10 @@ export const GET_PRODUCTS = gql`
         thumbnails
         images
         thumbnails
+        attributes1 {
+          title
+          description
+        }
         regularPrice
         salePrice
         tax
@@ -69,6 +73,10 @@ export const GET_PRODUCTS_BY_IDS = gql`
       productType
       images
       thumbnails
+      attributes1 {
+        title
+        description
+      }
       regularPrice
       salePrice
       tax
@@ -116,6 +124,8 @@ export const PRODUCTS = gql`
     $category: String!
     $images: [String]
     $thumbnails: [String]
+    $attributes1: [attribute1InputType]
+    $attributes2: [attribute1InputType]
     $regularPrice: Float
     $salePrice: Float
     $tax: Float
@@ -132,6 +142,8 @@ export const PRODUCTS = gql`
       category: $category
       images: $images
       thumbnails: $thumbnails
+      attributes1: $attributes1
+      attributes2: $attributes2
       regularPrice: $regularPrice
       salePrice: $salePrice
       tax: $tax
@@ -148,6 +160,14 @@ export const PRODUCTS = gql`
       productType
       images
       thumbnails
+      attributes1 {
+        title
+        description
+      }
+      attributes2 {
+        title
+        description
+      }
       regularPrice
       salePrice
       tax

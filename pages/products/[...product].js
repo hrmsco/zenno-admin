@@ -33,6 +33,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Tooltip from "@mui/material/Tooltip";
+import { IconButton } from "@mui/material";
 
 // ** Third party imports
 import { Field, Form } from "react-final-form";
@@ -59,6 +60,12 @@ export default function CreateProduct() {
   const [availability, setAvailability] = useState({});
   const [selectedOptions, setSelectedOptions] = useState({});
   const [selectedVariants, setSelectedVariants] = useState({});
+  const [attributes1, setAttributes1] = useState([
+    { title: "", description: "" },
+  ]);
+  const [attributes2, setAttributes2] = useState([
+    { title: "", description: "" },
+  ]);
 
   // Product id
   const productId =
@@ -344,6 +351,68 @@ export default function CreateProduct() {
         </div>
         <div className={classes.formFields}>
           <div className={classes.formField}>
+            <div>
+              <Typography variant="h6">Attributes 1</Typography>
+              {attributes1.map((attribute, index) => (
+                <div key={index} className={classes.attribute}>
+                  <TextField
+                    label="Title"
+                    value={attribute.title}
+                    onChange={(e) =>
+                      updateAttribute(index, "title", e.target.value)
+                    }
+                  />
+                  <TextField
+                    label="Description"
+                    value={attribute.description}
+                    onChange={(e) =>
+                      updateAttribute(index, "description", e.target.value)
+                    }
+                  />
+                  <IconButton onClick={() => removeAttribute(index)}>
+                    <AiOutlineMinusCircle />
+                  </IconButton>
+                </div>
+              ))}
+              <IconButton onClick={addAttribute}>
+                <GrAddCircle />
+              </IconButton>
+            </div>
+          </div>
+        </div>
+        <div className={classes.formFields}>
+          <div className={classes.formField}>
+            <div>
+              <Typography variant="h6">Attributes 2</Typography>
+              {attributes2.map((attribute, index) => (
+                <div key={index} className={classes.attribute}>
+                  <TextField
+                    label="Title"
+                    value={attribute.title}
+                    onChange={(e) =>
+                      updateAttribute2(index, "title", e.target.value)
+                    }
+                  />
+                  <TextField
+                    label="Description"
+                    value={attribute.description}
+                    onChange={(e) =>
+                      updateAttribute2(index, "description", e.target.value)
+                    }
+                  />
+                  <IconButton onClick={() => removeAttribute2(index)}>
+                    <AiOutlineMinusCircle />
+                  </IconButton>
+                </div>
+              ))}
+              <IconButton onClick={addAttribute2}>
+                <GrAddCircle />
+              </IconButton>
+            </div>
+          </div>
+        </div>
+        <div className={classes.formFields}>
+          <div className={classes.formField}>
             <Field
               name={
                 name === "simpleProduct" || name === "3dSimpleProduct"
@@ -410,6 +479,42 @@ export default function CreateProduct() {
         </div>
       </>
     );
+  };
+
+  // Fonction pour ajouter un attribut
+  const addAttribute = () => {
+    setAttributes1([...attributes1, { title: "", description: "" }]);
+  };
+  const addAttribute2 = () => {
+    setAttributes2([...attributes2, { title: "", description: "" }]);
+  };
+
+  // Fonction pour supprimer un attribut
+  const removeAttribute = (index) => {
+    const updatedAttributes = [...attributes1];
+    updatedAttributes.splice(index, 1);
+    setAttributes1(updatedAttributes);
+  };
+
+  // Fonction pour supprimer un attribut
+  const removeAttribute2 = (index) => {
+    const updatedAttributes = [...attributes2];
+    updatedAttributes.splice(index, 1);
+    setAttributes2(updatedAttributes);
+  };
+
+  // Fonction pour mettre à jour les valeurs d'attribut
+  const updateAttribute = (index, field, value) => {
+    const updatedAttributes = [...attributes1];
+    updatedAttributes[index][field] = value;
+    setAttributes1(updatedAttributes);
+  };
+
+  // Fonction pour mettre à jour les valeurs d'attribut
+  const updateAttribute2 = (index, field, value) => {
+    const updatedAttributes = [...attributes2];
+    updatedAttributes[index][field] = value;
+    setAttributes2(updatedAttributes);
   };
 
   // Render thumbnails field for 3d products
@@ -479,6 +584,8 @@ export default function CreateProduct() {
           category: values.category.toLowerCase(),
           productType: values.productType,
           thumbnails: values.thumbnails,
+          attributes1: attributes1,
+          attributes2: attributes2,
           images: values.images,
           regularPrice: values.regularPrice,
           salePrice: values.salePrice,
@@ -522,6 +629,8 @@ export default function CreateProduct() {
           desc: values.desc,
           category: values.category.toLowerCase(),
           thumbnails: values.thumbnails,
+          attributes1: attributes1,
+          attributes2: attributes2,
           productType: values.productType,
           variantsOptions,
           variants: removeTypename(parsedVariants),

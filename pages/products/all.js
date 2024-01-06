@@ -81,7 +81,8 @@ export default function Products() {
                 src={
                   process.env.NEXT_PUBLIC_BACKEND_URL +
                   "product/" +
-                  GetProductDetails(params.row).images[0]
+                  (GetProductDetails(params.row).images[0] ||
+                    GetProductDetails(params.row).thumbnails[0])
                 }
                 alt={params.row.title}
                 width={80}
@@ -95,7 +96,8 @@ export default function Products() {
                     src={
                       process.env.NEXT_PUBLIC_BACKEND_URL +
                       "product/" +
-                      GetProductDetails(params.row).images[1]
+                      (GetProductDetails(params.row).images[1] ||
+                    GetProductDetails(params.row).thumbnails[0])
                     }
                     alt={params.row.title}
                     width={80}
@@ -106,7 +108,8 @@ export default function Products() {
                     src={
                       process.env.NEXT_PUBLIC_BACKEND_URL +
                       "product/" +
-                      GetProductDetails(params.row).images[0]
+                      (GetProductDetails(params.row).images[0] ||
+                    GetProductDetails(params.row).thumbnails[0])
                     }
                     alt={params.row.title}
                     width={80}
