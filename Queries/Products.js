@@ -34,6 +34,10 @@ export const GET_PRODUCTS = gql`
           title
           description
         }
+        attributes2 {
+          title
+          description
+        }
         regularPrice
         salePrice
         tax
@@ -74,6 +78,10 @@ export const GET_PRODUCTS_BY_IDS = gql`
       images
       thumbnails
       attributes1 {
+        title
+        description
+      }
+      attributes2 {
         title
         description
       }

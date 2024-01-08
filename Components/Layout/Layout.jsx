@@ -174,7 +174,7 @@ function Layout({ page, role, privileges }) {
                 <RiAdminLine className={classes.sidebarIcon} />
               </ListItemIcon>
               <ListItemText
-                primary={<Typography variant="h6">Mange Admins</Typography>}
+                primary={<Typography variant="h6">Manage Admins</Typography>}
                 className={classes.sidebarText}
               />
               {adminsDropDown ? <MdExpandLess /> : <MdExpandMore />}
