@@ -24,6 +24,15 @@ export const GET_ORDERS = gql`
           _id
           title
           images
+          thumbnails
+          attributes1 {
+            title
+            description
+          }
+          attributes2 {
+            title
+            description
+          }
           salePrice
           inStock
           tax
@@ -70,6 +79,15 @@ export const GET_ORDER_BY_ID = gql`
           _id
           title
           images
+          thumbnails
+          attributes1 {
+            title
+            description
+          }
+          attributes2 {
+            title
+            description
+          }
           salePrice
           inStock
           tax
@@ -128,6 +146,15 @@ export const EDIT_ORDER = gql`
           _id
           title
           images
+          thumbnails
+          attributes1 {
+            title
+            description
+          }
+          attributes2 {
+            title
+            description
+          }
           salePrice
           inStock
           tax
@@ -177,6 +204,15 @@ export const GET_ORDERS_BY_CUSTOMER = gql`
           _id
           title
           images
+          thumbnails
+          attributes1 {
+            title
+            description
+          }
+          attributes2 {
+            title
+            description
+          }
           salePrice
           inStock
           tax

@@ -175,6 +175,8 @@ export default function ViewOrder() {
     }
   };
 
+  console.log(order);
+
   return (
     <div className={classes.viewOrderCtn}>
       <Seo title={"View Order"} />
@@ -355,17 +357,19 @@ export default function ViewOrder() {
                       <TableRow key={index}>
                         <TableCell component="th" scope="row" align="left">
                           <div className={classes.productTab}>
+                          {item.product.thumbnails && (
                             <CustomImage
                               src={
                                 process.env.NEXT_PUBLIC_BACKEND_URL +
                                 "product/" +
-                                item.product.images[0]
+                                item.product.thumbnails[0]
                               }
-                              alt={item.product.title}
-                              width={90}
-                              height={85}
+                              alt="product"
+                              width={80}
+                              height={80}
                               style={classes.productImage}
                             />
+                          )}
                             <div>
                               <Typography variant="h6">
                                 {item.product.title}
