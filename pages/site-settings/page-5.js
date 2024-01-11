@@ -30,7 +30,7 @@ export default function PaymentMethods() {
   const siteSettings = useSelector((state) => state.siteSettings.siteSettings);
 
   // Payment methods
-  const paymentMethods = ["stripe", "paypal", "razorpay", "cod"];
+  const paymentMethods = ["stripe", "paypal", "revolut", "razorpay", "cod"];
 
   useEffect(() => {
     if (siteSettings?.paymentMethods) {
