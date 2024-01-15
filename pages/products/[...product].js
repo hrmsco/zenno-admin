@@ -103,6 +103,8 @@ export default function CreateProduct() {
     onCompleted(data) {
       if (data.getProductsByIds.length > 0) {
         setProduct(data.getProductsByIds[0]);
+        setAttributes1(data.getProductsByIds[0].attributes1);
+        setAttributes2(data.getProductsByIds[0].attributes2);
       } else {
         router.push("/shop");
       }
@@ -120,6 +122,8 @@ export default function CreateProduct() {
         });
 
         setProduct(product);
+        setAttributes1(product.attributes1);
+        setAttributes2(product.attributes2);
       } else {
         getProductsByIds({ variables: { ids: [productId] } });
       }
@@ -318,6 +322,8 @@ export default function CreateProduct() {
       [index]: values,
     }));
   };
+
+  console.log("product", product);
 
   // Render the form fields based on product type
   const renderFields = (name, index) => {
