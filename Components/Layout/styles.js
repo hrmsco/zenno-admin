@@ -36,6 +36,8 @@ const useStyles = makeStyles()((theme) => {
     },
     logo: {
       padding: "15px",
+      width: "100px",
+      marginLeft: "20px",
       "& > a > div": {
         display: "flex",
         justifyContent: "center",

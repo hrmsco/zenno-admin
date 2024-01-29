@@ -6,7 +6,7 @@ const useStyles = makeStyles()((theme) => {
     container: {
       width: "100vw",
       height: "100vh",
-      backgroundImage: `url(${"/assets/bg.webp"})`,
+      backgroundImage: `url(${"/assets/bg-riso-01.jpg"})`,
       backgroundPosition: "center",
       backgroundSize: "cover",
     },
