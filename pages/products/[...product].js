@@ -102,14 +102,33 @@ export default function CreateProduct() {
   const [getProductsByIds] = useMutation(GET_PRODUCTS_BY_IDS, {
     onCompleted(data) {
       if (data.getProductsByIds.length > 0) {
+        const cleanedAttributes1 = data.getProductsByIds[0].attributes1.map(
+          (attribute) => {
+            // Crée un nouvel objet sans le champ __typename
+            const { __typename, ...cleanedAttribute } = attribute;
+            return cleanedAttribute;
+          }
+        );
+        const cleanedAttributes2 = data.getProductsByIds[0].attributes2.map(
+          (attribute) => {
+            // Crée un nouvel objet sans le champ __typename
+            const { __typename, ...cleanedAttribute } = attribute;
+            return cleanedAttribute;
+          }
+        );
+
+        console.log("cleanedAttributes1", cleanedAttributes1);
+
         setProduct(data.getProductsByIds[0]);
-        setAttributes1(data.getProductsByIds[0].attributes1);
-        setAttributes2(data.getProductsByIds[0].attributes2);
+        setAttributes1(cleanedAttributes1);
+        setAttributes2(cleanedAttributes2);
       } else {
         router.push("/shop");
       }
     },
   });
+
+  console.log("attributes1", attributes1);
 
   // Product data
   const productsData = useSelector((state) => state.products.products);
@@ -120,10 +139,20 @@ export default function CreateProduct() {
         const product = productsData.find((product) => {
           return product._id === productId;
         });
+        const cleanedAttributes1 = product.attributes1.map((attribute) => {
+          // Crée un nouvel objet sans le champ __typename
+          const { __typename, ...cleanedAttribute } = attribute;
+          return cleanedAttribute;
+        });
+        const cleanedAttributes2 = product.attributes2.map((attribute) => {
+          // Crée un nouvel objet sans le champ __typename
+          const { __typename, ...cleanedAttribute } = attribute;
+          return cleanedAttribute;
+        });
 
         setProduct(product);
-        setAttributes1(product.attributes1);
-        setAttributes2(product.attributes2);
+        setAttributes1(cleanedAttributes1);
+        setAttributes2(cleanedAttributes2);
       } else {
         getProductsByIds({ variables: { ids: [productId] } });
       }
@@ -512,17 +541,22 @@ export default function CreateProduct() {
   // Fonction pour mettre à jour les valeurs d'attribut
   const updateAttribute = (index, field, value) => {
     const updatedAttributes = [...attributes1];
-    updatedAttributes[index][field] = value;
+    updatedAttributes[index] = {
+      ...updatedAttributes[index],
+      [field]: value,
+    };
     setAttributes1(updatedAttributes);
   };
 
   // Fonction pour mettre à jour les valeurs d'attribut
   const updateAttribute2 = (index, field, value) => {
     const updatedAttributes = [...attributes2];
-    updatedAttributes[index][field] = value;
+    updatedAttributes[index] = {
+      ...updatedAttributes[index],
+      [field]: value,
+    };
     setAttributes2(updatedAttributes);
   };
-
   // Render thumbnails field for 3d products
   const renderThumbnails = () => (
     <div className={classes.formFields}>
