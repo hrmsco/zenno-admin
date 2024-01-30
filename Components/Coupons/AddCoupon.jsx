@@ -148,7 +148,7 @@ function AddCoupon({ id, modal }) {
                 <Field
                   name="minValue"
                   component={FormTextFieldAdorn}
-                  adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+                  adornment="€"
                   validate={composeValidators(isRequired, isNumbers)}
                   label="Min Value"
                 />
@@ -157,7 +157,7 @@ function AddCoupon({ id, modal }) {
                 <Field
                   name="maxValue"
                   component={FormTextFieldAdorn}
-                  adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+                  adornment="€"
                   validate={composeValidators(isNumbers)}
                   label="Max Value"
                 />
@@ -221,7 +221,7 @@ function AddCoupon({ id, modal }) {
                 <Field
                   name="discount"
                   component={FormTextFieldAdorn}
-                  adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+                  adornment="€"
                   validate={composeValidators(isRequired, isNumbers)}
                   label="Discount"
                 />

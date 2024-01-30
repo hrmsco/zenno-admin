@@ -76,7 +76,7 @@ export default function Shipping() {
               <Field
                 name="fees"
                 component={FormTextFieldAdorn}
-                adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+                adornment="€"
                 validate={composeValidators(isRequired, isNumbers)}
                 label="Shipping Fees"
               />
@@ -85,7 +85,7 @@ export default function Shipping() {
               <Field
                 name="minValue"
                 component={FormTextFieldAdorn}
-                adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+                adornment="€"
                 helperText={"Min value to avoid shipping fees"}
                 validate={composeValidators(isRequired, isNumbers)}
                 label="Min Value"

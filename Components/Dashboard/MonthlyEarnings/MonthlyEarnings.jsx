@@ -156,8 +156,7 @@ function MonthlyEarnings() {
       <CardContent>
         <Box sx={{ mb: 1.5, display: "flex", alignItems: "center" }}>
           <Typography variant="h2">
-            {totalMonthRevenue(currentMonthRevenue)?.toFixed(2)}
-            {process.env.NEXT_PUBLIC_STORE_CURRENCY}
+            {totalMonthRevenue(currentMonthRevenue)?.toFixed(2)} €
           </Typography>
           <Box
             sx={{

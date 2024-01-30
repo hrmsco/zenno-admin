@@ -73,12 +73,7 @@ export default function OrderManagement() {
       headerAlign: "center",
       align: "center",
       renderCell: (params) => {
-        return (
-          <Typography>
-            {params.row.totalAmount}
-            {process.env.NEXT_PUBLIC_STORE_CURRENCY}
-          </Typography>
-        );
+        return <Typography>{params.row.totalAmount} €</Typography>;
       },
     },
     {

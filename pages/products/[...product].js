@@ -455,7 +455,7 @@ export default function CreateProduct() {
                   : `${name}.regularPrice`
               }
               component={FormTextFieldAdorn}
-              adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+              adornment="€"
               validate={composeValidators(isRequired, isNumbers)}
               label="Regular Price"
             />
@@ -468,7 +468,7 @@ export default function CreateProduct() {
                   : `${name}.salePrice`
               }
               component={FormTextFieldAdorn}
-              adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+              adornment="€"
               validate={composeValidators(isRequired, isNumbers)}
               label="Sale Price"
               helperText={"Should be lower than or equal to regular price"}

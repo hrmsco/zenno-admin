@@ -97,7 +97,7 @@ export default function Products() {
                       process.env.NEXT_PUBLIC_BACKEND_URL +
                       "product/" +
                       (GetProductDetails(params.row).images[1] ||
-                    GetProductDetails(params.row).thumbnails[0])
+                        GetProductDetails(params.row).thumbnails[0])
                     }
                     alt={params.row.title}
                     width={80}
@@ -109,7 +109,7 @@ export default function Products() {
                       process.env.NEXT_PUBLIC_BACKEND_URL +
                       "product/" +
                       (GetProductDetails(params.row).images[0] ||
-                    GetProductDetails(params.row).thumbnails[0])
+                        GetProductDetails(params.row).thumbnails[0])
                     }
                     alt={params.row.title}
                     width={80}
@@ -129,10 +129,7 @@ export default function Products() {
       width: 150,
       renderCell: (params) => {
         return (
-          <Typography>
-            {GetProductDetails(params.row).salePrice}
-            {process.env.NEXT_PUBLIC_STORE_CURRENCY}
-          </Typography>
+          <Typography>{GetProductDetails(params.row).salePrice} €</Typography>
         );
       },
     },

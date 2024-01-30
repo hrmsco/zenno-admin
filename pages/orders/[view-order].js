@@ -357,19 +357,19 @@ export default function ViewOrder() {
                       <TableRow key={index}>
                         <TableCell component="th" scope="row" align="left">
                           <div className={classes.productTab}>
-                          {item.product.thumbnails && (
-                            <CustomImage
-                              src={
-                                process.env.NEXT_PUBLIC_BACKEND_URL +
-                                "product/" +
-                                item.product.thumbnails[0]
-                              }
-                              alt="product"
-                              width={80}
-                              height={80}
-                              style={classes.productImage}
-                            />
-                          )}
+                            {item.product.thumbnails && (
+                              <CustomImage
+                                src={
+                                  process.env.NEXT_PUBLIC_BACKEND_URL +
+                                  "product/" +
+                                  item.product.thumbnails[0]
+                                }
+                                alt="product"
+                                width={80}
+                                height={80}
+                                style={classes.productImage}
+                              />
+                            )}
                             <div>
                               <Typography variant="h6">
                                 {item.product.title}
@@ -392,8 +392,7 @@ export default function ViewOrder() {
                         </TableCell>
                         <TableCell align="center">
                           <Typography variant="subtitle1">
-                            {item.product.salePrice}
-                            {process.env.NEXT_PUBLIC_STORE_CURRENCY}
+                            {item.product.salePrice} €
                           </Typography>
                         </TableCell>
                       </TableRow>
@@ -453,8 +452,7 @@ export default function ViewOrder() {
                         <Typography variant="subtitle1">
                           {order.shippingFees === "FREE"
                             ? order.shippingFees
-                            : order.shippingFees +
-                              process.env.NEXT_PUBLIC_STORE_CURRENCY}
+                            : order.shippingFees + " €"}
                         </Typography>
                       </TableCell>
                     </TableRow>

@@ -338,7 +338,7 @@ export default function CreateProduct() {
                   : `${name}.regularPrice`
               }
               component={FormTextFieldAdorn}
-              adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+              adornment="€"
               validate={composeValidators(isRequired, isNumbers)}
               label="Regular Price"
             />
@@ -349,7 +349,7 @@ export default function CreateProduct() {
                 name === "simpleProduct" ? "salePrice" : `${name}.salePrice`
               }
               component={FormTextFieldAdorn}
-              adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+              adornment="€"
               validate={composeValidators(isRequired, isNumbers)}
               label="Sale Price"
               helperText={"Should be lower than or equal to regular price"}
@@ -414,7 +414,9 @@ export default function CreateProduct() {
         <div className={classes.formFields}>
           <div className={classes.formField}>
             <Field
-              name={name === "modelThreeD" ? "thumbnails" : `${name}.thumbnails`}
+              name={
+                name === "modelThreeD" ? "thumbnails" : `${name}.thumbnails`
+              }
               validate={isRequired}
             >
               {(props) => (
@@ -430,9 +432,11 @@ export default function CreateProduct() {
         <div className={classes.formFields}>
           <div className={classes.formField}>
             <Field
-              name={name === "modelThreeD" ? "regularPrice" : `${name}.regularPrice`}
+              name={
+                name === "modelThreeD" ? "regularPrice" : `${name}.regularPrice`
+              }
               component={FormTextFieldAdorn}
-              adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+              adornment="€"
               validate={composeValidators(isRequired, isNumbers)}
               label="Regular Price"
             />
@@ -441,7 +445,7 @@ export default function CreateProduct() {
             <Field
               name={name === "modelThreeD" ? "salePrice" : `${name}.salePrice`}
               component={FormTextFieldAdorn}
-              adornment={process.env.NEXT_PUBLIC_STORE_CURRENCY}
+              adornment="€"
               validate={composeValidators(isRequired, isNumbers)}
               label="Sale Price"
               helperText={"Should be lower than or equal to regular price"}
@@ -470,7 +474,9 @@ export default function CreateProduct() {
           </div>
           <div className={classes.formField}>
             <Field
-              name={name === "modelThreeD" ? "totalStocks" : `${name}.totalStocks`}
+              name={
+                name === "modelThreeD" ? "totalStocks" : `${name}.totalStocks`
+              }
               component={FormTextField}
               validate={composeValidators(isNumbers, isRequired)}
               label="Total Stocks"

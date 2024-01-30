@@ -59,10 +59,7 @@ function TotalRevenue() {
           <Typography variant="h5" sx={{ mb: 1 }}>
             Total Revenue
           </Typography>
-          <Typography variant="h2">
-            {revenue?.toFixed(2)}
-            {process.env.NEXT_PUBLIC_STORE_CURRENCY}
-          </Typography>
+          <Typography variant="h2">{revenue?.toFixed(2)} €</Typography>
         </Box>
         <Typography variant="subtitle2">Overall revenue</Typography>
       </CardContent>
